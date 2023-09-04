@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Art-Zvyazok/static/css/main.7acaea2f.css",
-    "main.js": "/Art-Zvyazok/static/js/main.51b34dc6.js",
+    "main.css": "/Art-Zvyazok/static/css/main.b5320759.css",
+    "main.js": "/Art-Zvyazok/static/js/main.6087c923.js",
     "index.html": "/Art-Zvyazok/index.html",
-    "main.7acaea2f.css.map": "/Art-Zvyazok/static/css/main.7acaea2f.css.map",
-    "main.51b34dc6.js.map": "/Art-Zvyazok/static/js/main.51b34dc6.js.map"
+    "main.b5320759.css.map": "/Art-Zvyazok/static/css/main.b5320759.css.map",
+    "main.6087c923.js.map": "/Art-Zvyazok/static/js/main.6087c923.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.51b34dc6.js"
+    "static/css/main.b5320759.css",
+    "static/js/main.6087c923.js"
   ]
 }
