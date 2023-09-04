@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Art-Zvyazok/static/css/main.7acaea2f.css",
+    "main.js": "/Art-Zvyazok/static/js/main.51b34dc6.js",
+    "index.html": "/Art-Zvyazok/index.html",
+    "main.7acaea2f.css.map": "/Art-Zvyazok/static/css/main.7acaea2f.css.map",
+    "main.51b34dc6.js.map": "/Art-Zvyazok/static/js/main.51b34dc6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.51b34dc6.js"
+  ]
+}
