@@ -42,15 +42,15 @@ html {
   
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    font-family: font-family: 'Montserrat', sans-serif; 'Segoe UI', Roboto,
       Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     color: #212121;
     background-color: #fff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background:  linear-gradient(180deg, #2A005E 0%, #0D001C 46.35%) no-repeat;
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-family: 'Montserrat', sans-serif;
+ 
   }
   
+ 
 `
