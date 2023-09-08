@@ -1,16 +1,23 @@
 {
   "files": {
     "main.css": "/Art-Zvyazok/static/css/main.e4ed7ece.css",
-    "main.js": "/Art-Zvyazok/static/js/main.82dc2ff3.js",
+    "main.js": "/Art-Zvyazok/static/js/main.74d49888.js",
     "static/media/MontserratAlternates-Black.ttf": "/Art-Zvyazok/static/media/MontserratAlternates-Black.53c65844392081267032.ttf",
     "static/media/MontserratAlternates-Regular.ttf": "/Art-Zvyazok/static/media/MontserratAlternates-Regular.17043267bfe178ef8921.ttf",
     "static/media/Montserrat-Regular.ttf": "/Art-Zvyazok/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
+    "static/media/discord.svg": "/Art-Zvyazok/static/media/discord.e966bc00d31b03482a417f3fe2667438.svg",
+    "static/media/devicon_google.svg": "/Art-Zvyazok/static/media/devicon_google.5f39b84bfb9e5bd74a7eb7fdb4e3feac.svg",
+    "static/media/spotify.svg": "/Art-Zvyazok/static/media/spotify.7f23aecab440111f0d6b0e025c961f29.svg",
+    "static/media/telegram.svg": "/Art-Zvyazok/static/media/telegram.c076a2da97ed268a2db01c66a44f58f5.svg",
     "index.html": "/Art-Zvyazok/index.html",
+    "static/media/Instagram.svg": "/Art-Zvyazok/static/media/Instagram.22dedb6b6b4f99d971719631b81528a5.svg",
+    "static/media/Group.svg": "/Art-Zvyazok/static/media/Group.9a06551123cf92a9c12e98384452da31.svg",
+    "static/media/Line.svg": "/Art-Zvyazok/static/media/Line.2ff39ab83ca419d2c42b07038d1e4fd8.svg",
     "main.e4ed7ece.css.map": "/Art-Zvyazok/static/css/main.e4ed7ece.css.map",
-    "main.82dc2ff3.js.map": "/Art-Zvyazok/static/js/main.82dc2ff3.js.map"
+    "main.74d49888.js.map": "/Art-Zvyazok/static/js/main.74d49888.js.map"
   },
   "entrypoints": [
     "static/css/main.e4ed7ece.css",
-    "static/js/main.82dc2ff3.js"
+    "static/js/main.74d49888.js"
   ]
 }
