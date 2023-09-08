@@ -31,6 +31,16 @@ export  const StyledForm = styled(Form)`
     justify-content: center;
     align-items: center;
 `
+export const ErMessName = styled(ErrorMessage)`
+    position: absolute;
+    top: 41%;
+    color: red;
+`
+export const ErMessPass = styled(ErrorMessage)`
+    position: absolute;
+    top: 51%;
+    color: red;
+`
 
 export const Button = styled.button`
     width: 100%;
@@ -99,16 +109,6 @@ export const StyledField = styled(Field)`
     font-weight: 400;
 
 `
-export const ErMessName = styled(ErrorMessage)`
-    position: absolute;
-    top: 41%;
-    color: red;
-`
-export const ErMessPass = styled(ErrorMessage)`
-    position: absolute;
-    top: 51%;
-    color: red;
-`
 
 export const DescrTxt = styled.p`
     color: #fff;
@@ -161,9 +161,4 @@ export const LineSvg = styled(Line)`
     top: 50%;
     right: -210px;
 `
-
-
-
-
-
 

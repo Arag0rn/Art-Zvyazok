@@ -1,6 +1,6 @@
-import { Formik } from 'formik';
+import { Formik} from 'formik';
 import { H1, RegistrDiv, StyledForm, Button, EnterBtn, StyledField, DescrTxt, UnderBtnBox,
-UnderBtnTxt, RegistTxt, LineSvg, ErMessName, ErMessPass} from './Auth.styled';
+UnderBtnTxt, RegistTxt, LineSvg, ErMessName, ErMessPass} from './Registr.styled';
 import { ReactComponent as GoogleIcon } from "./devicon_google.svg"
 import * as Yup from 'yup';
 
@@ -20,11 +20,10 @@ const validationSchema1 = Yup.object({
 });
 
 
-
-export const Auth = ({onRegClick, onRegOpen}) => {
+export const Registr = ({onRegClick, onRegOpen, onContPress, onContOpen}) => {
     return (
       <RegistrDiv className="registration">
-        <H1>ВХІД В АКАУНТ</H1>
+        <H1>РЕЄСТРАЦІЯ</H1>
         <Formik
           initialValues={{
             email: '',
@@ -32,7 +31,7 @@ export const Auth = ({onRegClick, onRegOpen}) => {
           }}
           validationSchema={validationSchema1}
           onSubmit={(values, actions) => {
-            // Ваша логика обработки данных формы
+          
             console.log('Submitted:', values);
             actions.resetForm();
           }}
@@ -42,9 +41,8 @@ export const Auth = ({onRegClick, onRegOpen}) => {
             <ErMessName name="email" component="div"/>
             <StyledField type="password" placeholder="Пароль" name="password" />
             <ErMessPass name="password" component="div" />
-            <EnterBtn className="btn enter-btn" type="submit">
-            
-              Увійти
+            <EnterBtn onClick={() => { onContPress(); onContOpen()}} className="btn enter-btn" type="submit">
+              Продовжити
             </EnterBtn>
             
             <DescrTxt className="dev-txt"><LineSvg></LineSvg>або</DescrTxt>
@@ -57,8 +55,8 @@ export const Auth = ({onRegClick, onRegOpen}) => {
         </Formik>
   
         <UnderBtnBox className="underBtnBox">
-          <UnderBtnTxt className="underBtnTxr">Вперше тут?</UnderBtnTxt>
-          <RegistTxt onClick={() => { onRegClick(); onRegOpen(); }}  className="RegistTxt">Зареєструватися</RegistTxt>
+          <UnderBtnTxt className="underBtnTxr">Маєш акаунт?</UnderBtnTxt>
+          <RegistTxt onClick={() => { onRegClick(); onRegOpen(); }} className="RegistTxt">Увійти</RegistTxt>
         </UnderBtnBox>
       </RegistrDiv>
     );
