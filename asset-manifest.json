@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Art-Zvyazok/static/css/main.e4ed7ece.css",
-    "main.js": "/Art-Zvyazok/static/js/main.74d49888.js",
+    "main.js": "/Art-Zvyazok/static/js/main.466ba083.js",
     "static/media/MontserratAlternates-Black.ttf": "/Art-Zvyazok/static/media/MontserratAlternates-Black.53c65844392081267032.ttf",
     "static/media/MontserratAlternates-Regular.ttf": "/Art-Zvyazok/static/media/MontserratAlternates-Regular.17043267bfe178ef8921.ttf",
     "static/media/Montserrat-Regular.ttf": "/Art-Zvyazok/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
@@ -14,10 +14,10 @@
     "static/media/Group.svg": "/Art-Zvyazok/static/media/Group.9a06551123cf92a9c12e98384452da31.svg",
     "static/media/Line.svg": "/Art-Zvyazok/static/media/Line.2ff39ab83ca419d2c42b07038d1e4fd8.svg",
     "main.e4ed7ece.css.map": "/Art-Zvyazok/static/css/main.e4ed7ece.css.map",
-    "main.74d49888.js.map": "/Art-Zvyazok/static/js/main.74d49888.js.map"
+    "main.466ba083.js.map": "/Art-Zvyazok/static/js/main.466ba083.js.map"
   },
   "entrypoints": [
     "static/css/main.e4ed7ece.css",
-    "static/js/main.74d49888.js"
+    "static/js/main.466ba083.js"
   ]
 }
