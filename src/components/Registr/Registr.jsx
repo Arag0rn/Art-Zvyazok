@@ -8,7 +8,7 @@ const validationSchema1 = Yup.object({
   email: Yup.string()
     .email('Невірний формат електронної пошти')
     .min(5, 'Must be min 5 characters')
-    .max(15, 'Must be 15 characters or less')
+    .max(15, 'Must be 16 characters or less')
     .matches(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/, 'Допускаються лише латинські символи та цифри')
     .required('Поле "Email" є обов\'язковим'),
     password: Yup.string()

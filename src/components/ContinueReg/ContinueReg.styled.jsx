@@ -21,6 +21,7 @@ export const H1 = styled.h1`
     text-align: center;
 `
 export  const StyledForm = styled(Form)`
+    position: relative;
     margin-top: 24px;
     width: 100%;
     display: flex;
@@ -76,7 +77,7 @@ export const CheckBox = styled(Field)`
 
 export const ErMessName = styled(ErrorMessage)`
     position: absolute;
-    top: 41%;
+    top: 49px;
     color: red;
 `
 
