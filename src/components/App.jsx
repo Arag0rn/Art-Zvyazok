@@ -1,16 +1,24 @@
-import { Component } from "react";
-import { Header } from "./Header/Header";
+
+
 import { GlobalStyle } from "./Global.styled";
 import { Container } from "./Container/Container";
-export class App extends Component  {
-  render() {
+import {  Routes, Route} from "react-router-dom";
+import {Home} from "../pages/Home"
+import { Homepage } from "pages/Home.page";
+import { Profile } from "pages/Profile";
+
+export const App = () => {
+ 
 
   
     return (
-      <div>
-        <Header/>
-        <Container/>
-        <GlobalStyle/>
-    </div>
-  );}
+      <Routes>
+        <Route path="/"  element={<Home/>}>
+        {/* <Container/>
+        <GlobalStyle/> */}
+         <Route path="/homepage" index element={<Homepage/>}></Route>
+         <Route path="/profile" element={<Profile/>}></Route>
+         </Route>
+      </Routes> 
+  );
 }
