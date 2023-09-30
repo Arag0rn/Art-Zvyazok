@@ -9,7 +9,7 @@ export const Header = () => {
         <Nav style={{ fontFamily: 'Montserrat Alternates, sans-serif' }}>
             <Link className="nav-link" to="/homepage">Головна</Link>
             <Link className="nav-link" to="/profile">Профіль</Link>
-            <NavLink className="nav-link" href="">Щось</NavLink>
+            <Link className="nav-link" to="/list_of_chats">Чати</Link>
             <NavLink className="nav-link" href="">Щось</NavLink>
             <NavLink className="nav-link" href="">Щось</NavLink>
             <NavLink className="nav-link" href="">Щось</NavLink>
@@ -17,4 +17,3 @@ export const Header = () => {
     </HeaderContainer>
 </HeaderSty>
 }
-

@@ -9,4 +9,5 @@ display: grid;
 margin-top: 40px;
 grid-template-columns: 548px 780px;
 column-gap: 32px;
+justify-content: center;
 `
