@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { Link } from "react-router-dom";
 
 export const HeaderSty = styled.div`
     background-color:  #1E0143;
@@ -26,8 +26,7 @@ export const Nav = styled.nav`
     display: flex;
     column-gap: 75px;
 `
-
-export const NavLink = styled.a`
+export const NavLink = styled(Link)`
     color: var(--btn-txt, #FFF);
     font-family: Montserrat Alternates;
     font-size: 20px;
