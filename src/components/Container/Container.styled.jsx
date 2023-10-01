@@ -11,3 +11,8 @@ grid-template-columns: 548px 780px;
 column-gap: 32px;
 justify-content: center;
 `
+export const ContainerChats = styled.div`
+    margin: 0 auto;
+    width: 1360px;
+
+`

@@ -32,7 +32,6 @@ export const Auth = ({onRegClick, onRegOpen}) => {
           }}
           validationSchema={validationSchema1}
           onSubmit={(values, actions) => {
-            // Ваша логика обработки данных формы
             console.log('Submitted:', values);
             actions.resetForm();
           }}
