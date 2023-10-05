@@ -1,30 +1,29 @@
+import { ProfCard } from "./Profile.styled"
 import { Formik } from 'formik';
-import { RegistrForm, StyledForm, StyledField, SelelectProf, UnderSellectTxt, CheckTxt, StyledTextarea,
-    LinksH3, LinkField, LinkBox, UserfotoBox, FotoTxt, EnterBtn, H1, CheckBox, ErMessName } from './ContinueReg.styled';
-import { ReactComponent as Instagram } from "./Instagram.svg" 
-import { ReactComponent as Discord } from "./discord.svg"  
-import { ReactComponent as Telegram } from "./telegram.svg"  
-import { ReactComponent as Spotify } from "./spotify.svg"  
-import { ReactComponent as LoadImg } from "./Group.svg"     
+import {  StyledForm, StyledField, SelelectProf, UnderSellectTxt, CheckTxt, StyledTextarea,
+    LinksH3, LinkField, LinkBox, UserfotoBox, FotoTxt, EnterBtn,  CheckBox, ErMessName } from '../ContinueReg/ContinueReg.styled';
+import { ReactComponent as Instagram } from "../ContinueReg/Instagram.svg" 
+import { ReactComponent as Discord } from "../ContinueReg/discord.svg"  
+import { ReactComponent as Telegram } from "../ContinueReg/telegram.svg"  
+import { ReactComponent as Spotify } from "../ContinueReg/spotify.svg"      
 import * as Yup from 'yup';
-import { GetNewUser, RegNewUser } from 'components/Api';
+
+
 
 const validationSchema1 = Yup.object({
-  nickname: Yup.string()
-  .min(2, 'мінімум 2 символи')
-  .max(25, 'максимум 25 символів')
-  .matches(/^[a-zA-Zа-яА-ЯёЁіІїЇєЄґҐ']{2,25}$/, 'Допускаються лише латинські та українські букви')
-  .required('Поле "Nickname" є обов\'язковим'),
+   nickname: Yup.string()
+   .min(2, 'мінімум 2 символи')
+   .max(25, 'максимум 25 символів')
+   .matches(/^[a-zA-Zа-яА-ЯёЁіІїЇєЄґҐ']{2,25}$/, 'Допускаються лише латинські та українські букви')
+   .required('Поле "Nickname" є обов\'язковим'),
+ 
+   
+ });
 
-  
-});
-
-
-export const AuthContinue = () => {
-    return (
-      <RegistrForm className="ContinueRegistration">
-        <H1>РЕЄСТРАЦІЯ</H1>
-        <Formik
+export const Profile = ()=> {
+ return (
+    <ProfCard>
+      <Formik
            initialValues={{
             toggle: false,
             checked: [],
@@ -37,8 +36,7 @@ export const AuthContinue = () => {
           }}
           validationSchema={validationSchema1}
           onSubmit={(values, actions) => {
-            RegNewUser();
-            GetNewUser();
+       
             actions.resetForm();
           }}
         >
@@ -47,7 +45,7 @@ export const AuthContinue = () => {
             <ErMessName name="nickname" component="div"/>
             <SelelectProf className="selectProf" id="single">
               <option value="">--Спеціалізація--</option>
-              <option value="value 1">Value 1</option>
+              <option value="value 1">Музикант</option>
               <option value="value 2">Value 2</option>
               <option value="value 3">Value 3</option>
             </SelelectProf>
@@ -74,13 +72,10 @@ export const AuthContinue = () => {
               <Spotify></Spotify>
               <LinkField className="linkInput" type="text" placeholder="Spotify" name="spotify"/>
             </LinkBox>
-            <UserfotoBox className="UserfotoBox">
-                <LoadImg></LoadImg>
-              <FotoTxt className="fotoTxt">Завантажити фото профілю</FotoTxt>
-            </UserfotoBox>
+
             <EnterBtn className="btn enter-btn">Зареєструватися</EnterBtn>
           </StyledForm>
         </Formik>
-      </RegistrForm>
-    );
-  };
+    </ProfCard>
+ )
+} 
