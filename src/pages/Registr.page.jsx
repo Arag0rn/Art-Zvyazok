@@ -6,7 +6,7 @@ import { Auth } from "components/Auth/Auth";
 export const RegistrPage = () => {
     const [isRegistrOpen, setIsRegistrOpen] = useState(false);
     const [isAuthOpen, setIsAuthOpen] = useState(true);
-    const [isContinueReg, setIsContinueReg] = useState(false);
+    // const [isContinueReg, setIsContinueReg] = useState(false);
 
   return (
     <div>
@@ -15,9 +15,9 @@ export const RegistrPage = () => {
         onRegClick={() => setIsRegistrOpen(false)} 
         onRegOpen={() => setIsAuthOpen(true)} 
         onContPress={() => setIsRegistrOpen(false)}
-        onContOpen={()=> setIsContinueReg(true)}
+        // onContOpen={()=> setIsContinueReg(true)}
         ></Registr>)}
-      {isContinueReg && (<AuthContinue ></AuthContinue>)}  
+      {/* {isContinueReg && (<Pofi ></Pofi>)}   */}
     </div>
   );
 };

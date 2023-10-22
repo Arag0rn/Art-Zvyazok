@@ -7,7 +7,7 @@ import { ReactComponent as Telegram } from "./telegram.svg"
 import { ReactComponent as Spotify } from "./spotify.svg"  
 import { ReactComponent as LoadImg } from "./Group.svg"     
 import * as Yup from 'yup';
-import { GetNewUser, RegNewUser } from 'components/Api';
+// import { RegNewUser } from 'components/Api';
 
 const validationSchema1 = Yup.object({
   nickname: Yup.string()
@@ -37,8 +37,10 @@ export const AuthContinue = () => {
           }}
           validationSchema={validationSchema1}
           onSubmit={(values, actions) => {
-            RegNewUser();
-            GetNewUser();
+            console.log(values);
+            // RegNewUser();
+            // getTrendingMovie()
+            // GetNewUser();
             actions.resetForm();
           }}
         >
@@ -78,7 +80,7 @@ export const AuthContinue = () => {
                 <LoadImg></LoadImg>
               <FotoTxt className="fotoTxt">Завантажити фото профілю</FotoTxt>
             </UserfotoBox>
-            <EnterBtn className="btn enter-btn">Зареєструватися</EnterBtn>
+            <EnterBtn className="btn enter-btn" type="submit">Зареєструватися</EnterBtn>
           </StyledForm>
         </Formik>
       </RegistrForm>

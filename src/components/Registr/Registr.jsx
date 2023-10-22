@@ -2,13 +2,18 @@ import { Formik} from 'formik';
 import { H1, RegistrDiv, StyledForm, Button, EnterBtn, StyledField, DescrTxt, UnderBtnBox,
 UnderBtnTxt, RegistTxt, LineSvg, ErMessName, ErMessPass} from './Registr.styled';
 import { ReactComponent as GoogleIcon } from "./devicon_google.svg"
+import { useNavigate } from 'react-router-dom';
+import { useDispatch} from "react-redux";
 import * as Yup from 'yup';
+import { logIn } from 'components/Api';
+// import { setEmail } from 'Redux/userEmailSlice';
+
 
 const validationSchema1 = Yup.object({
   email: Yup.string()
     .email('Невірний формат електронної пошти')
     .min(5, 'Must be min 5 characters')
-    .max(15, 'Must be 16 characters or less')
+    .max(30, 'Must be 30 characters or less')
     .matches(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/, 'Допускаються лише латинські символи та цифри')
     .required('Поле "Email" є обов\'язковим'),
     password: Yup.string()
@@ -20,7 +25,11 @@ const validationSchema1 = Yup.object({
 });
 
 
-export const Registr = ({onRegClick, onRegOpen, onContPress, onContOpen}) => {
+export const Registr = ({onRegClick, onRegOpen}) => {
+  const dispatch = useDispatch();
+
+
+  const navigate  = useNavigate();
     return (
       <RegistrDiv className="registration">
         <H1>РЕЄСТРАЦІЯ</H1>
@@ -31,9 +40,11 @@ export const Registr = ({onRegClick, onRegOpen, onContPress, onContOpen}) => {
           }}
           validationSchema={validationSchema1}
           onSubmit={(values, actions) => {
-          
             console.log('Submitted:', values);
+            // dispatch(setEmail(values));
+            dispatch(logIn(values));
             actions.resetForm();
+            navigate('/profile')
           }}
         >
           <StyledForm>
@@ -41,7 +52,7 @@ export const Registr = ({onRegClick, onRegOpen, onContPress, onContOpen}) => {
             <ErMessName name="email" component="div"/>
             <StyledField type="password" placeholder="Пароль" name="password" />
             <ErMessPass name="password" component="div" />
-            <EnterBtn onClick={() => { onContPress(); onContOpen()}} className="btn enter-btn" type="submit">
+            <EnterBtn className="btn enter-btn" type="submit">
               Продовжити
             </EnterBtn>
             

@@ -1,59 +1,143 @@
 import axios from "axios";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { getUser } from "Redux/selectors";
 
 console.log('TEST PAGE');
-const apiKey = "oauth2";
+// axios.defaults.baseURL = "https://localhost:7257/api";
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-export const RegNewUser = async () => {
+// axios.defaults.headers.common['Authorization'] = `oauth2`
+const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
+
+
+export const logIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, thunkAPI) => {
+    console.log(credentials);
+   
     try {
-      const response = await axios.post(
-        "https://localhost:7257/api/Register/new",
-        {
-            "id": 0,
-            "createdAt": "2023-10-05T11:22:26.581Z",
-            "updatedAt": "2023-10-05T11:22:26.581Z",
-            "email": "string",
-            "username": "string",
-            "firstName": "string",
-            "lastName": "string",
-            "password": "string"
-          },
-        {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-                "Content-Type": 'application/json' 
-            }
-        }
-      );
-  
-      if (response.data.result === "success") {
-        console.log(response.data);
-      } else {
-        console.log(response.data);
-      }
+      const res = await axios.post('/users/login', credentials);
+      setAuthHeader(res.data.token);
+      return res.data;
     } catch (error) {
-      console.error("Ошибка аутентификации", error);
+      return thunkAPI.rejectWithValue(error.message);
     }
-  };
+  }
+);
 
-  export const GetNewUser = async () => {
+export const register = createAsyncThunk(
+  'auth/register',
+  async (newUser, thunkAPI) => {
+    console.log(newUser);
     try {
-      const response = await axios.get(
-        "https://localhost:7257/api/User/all",
+      const res = await axios.post('/users/signup', newUser);
+      setAuthHeader(res.data.token);
+      console.log(res)
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    await axios.post('/users/logout');
+    clearAuthHeader();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.user.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.get('/users/current');
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+
+
+
+// export const RegNewEmail = createAsyncThunk(
+//   'email/addEmail',
+//   async (credentials, thunkAPI) => {
+//   try {
+//     const response = await axios.post('/Register/new', credentials);
+//     console.log(response.data) 
+//     return response.data
+//     ;
+//   } catch (err) {
+//     console.error(err.toJSON())
+//   }
+// }
+// )
+
+
+
+// export const RegNewUser = createAsyncThunk(
+//   'user/addUser',
+//   async (credentials, thunkAPI) => {
+//     console.log(credentials);
+//   try {
+//     const response = await axios.post('/Register/new', {
+//       "id": 0,
+//       "createdAt": "2023-10-08T18:13:32.804Z",
+//       "updatedAt": "2023-10-08T18:13:32.804Z",
+//       "email": `${credentials.email}`,
+//       "username": `${credentials.nickname}`,
+//       "firstName": "string",
+//       "lastName": "string",
+//       "password": `${credentials.password}`
+      
+//     });
+//     console.log(response.data) 
+//     return response.data
+//     ;
+//   } catch (err) {
+//     console.error(err.toJSON())
+//   }
+// }
+// )
+
+  // export const GetNewUser = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "https://localhost:7257/api/User/all",
     
-        {
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-                "Content-Type": 'application/json' 
-            }
-        }
-      );
+  //       {
+  //           headers: {
+  //               Authorization: `Bearer ${apiKey}`,
+  //               "Content-Type": 'application/json' 
+  //           }
+  //       }
+  //     );
   
-      if (response.data.result === "success") {
-        console.log(response.data);
-      } else {
-        console.log(response.data);
-      }
-    } catch (error) {
-      console.error("Ошибка аутентификации", error);
-    }
-  };
+  //     if (response.data.result === "success") {
+  //       console.log(response.data);
+  //     } else {
+  //       console.log(response.data);
+  //     }
+  //   } catch (error) {
+  //     console.error("Ошибка аутентификации", error);
+  //   }
+  // };

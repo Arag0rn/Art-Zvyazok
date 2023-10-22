@@ -1,13 +1,15 @@
 import { ProfCard } from "./Profile.styled"
 import { Formik } from 'formik';
-import {  StyledForm, StyledField, SelelectProf, UnderSellectTxt, CheckTxt, StyledTextarea,
-    LinksH3, LinkField, LinkBox, UserfotoBox, FotoTxt, EnterBtn,  CheckBox, ErMessName } from '../ContinueReg/ContinueReg.styled';
+import { StyledForm, StyledField, SelelectProf, UnderSellectTxt, CheckTxt, StyledTextarea,
+  LinksH3, LinkField, LinkBox,  EnterBtn, CheckBox, ErMessName } from './Profile.styled';
 import { ReactComponent as Instagram } from "../ContinueReg/Instagram.svg" 
 import { ReactComponent as Discord } from "../ContinueReg/discord.svg"  
 import { ReactComponent as Telegram } from "../ContinueReg/telegram.svg"  
 import { ReactComponent as Spotify } from "../ContinueReg/spotify.svg"      
 import * as Yup from 'yup';
-
+import { useDispatch, useSelector } from "react-redux";
+// import { RegNewUser } from "components/Api";
+import { getEmail } from "Redux/selectors";
 
 
 const validationSchema1 = Yup.object({
@@ -21,6 +23,12 @@ const validationSchema1 = Yup.object({
  });
 
 export const Profile = ()=> {
+  const dispatch = useDispatch();
+  const email = useSelector(getEmail);
+  // useEffect(() => {
+  //   dispatch(RegNewUser());
+  // }, [dispatch])
+  
  return (
     <ProfCard>
       <Formik
@@ -32,11 +40,14 @@ export const Profile = ()=> {
             instagram: '',
             discord: '',
             telegram: '',
-            spotify: '',           
+            spotify: '',
+            email: `${email.email}`,
+            password: `${email.password}`,           
           }}
           validationSchema={validationSchema1}
-          onSubmit={(values, actions) => {
-       
+            onSubmit={(values, actions) => {
+              // dispatch(RegNewUser(values));
+              // RegNewUser()
             actions.resetForm();
           }}
         >
