@@ -9,7 +9,7 @@ import { ReactComponent as Spotify } from "../ContinueReg/spotify.svg"
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
 // import { RegNewUser } from "components/Api";
-import { getEmail } from "Redux/selectors";
+import { getUser} from "Redux/selectors";
 
 
 const validationSchema1 = Yup.object({
@@ -24,7 +24,7 @@ const validationSchema1 = Yup.object({
 
 export const Profile = ()=> {
   const dispatch = useDispatch();
-  const email = useSelector(getEmail);
+  const user = useSelector(getUser);
   // useEffect(() => {
   //   dispatch(RegNewUser());
   // }, [dispatch])
@@ -41,8 +41,8 @@ export const Profile = ()=> {
             discord: '',
             telegram: '',
             spotify: '',
-            email: `${email.email}`,
-            password: `${email.password}`,           
+            email: `${user.email}`,
+         
           }}
           validationSchema={validationSchema1}
             onSubmit={(values, actions) => {

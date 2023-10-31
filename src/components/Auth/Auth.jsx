@@ -3,8 +3,9 @@ import { H1, RegistrDiv, StyledForm, Button, EnterBtn, StyledField, DescrTxt, Un
 UnderBtnTxt, RegistTxt, LineSvg, ErMessName, ErMessPass} from './Auth.styled';
 import { ReactComponent as GoogleIcon } from "./devicon_google.svg"
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'components/Api';
+import { selectToken } from 'Redux/selectors';
 
 const validationSchema1 = Yup.object({
   email: Yup.string()
@@ -25,6 +26,10 @@ const validationSchema1 = Yup.object({
 
 export const Auth = ({onRegClick, onRegOpen}) => {
   const dispatch = useDispatch();
+
+  const token = useSelector(selectToken)
+
+
     return (
       <RegistrDiv className="registration">
         <H1>ВХІД В АКАУНТ</H1>
@@ -39,9 +44,10 @@ export const Auth = ({onRegClick, onRegOpen}) => {
               email: values.email,
               password: values.password,
             }));
-            console.log('Submitted:', values);
-            actions.resetForm();
+
           }}
+
+
         >
           <StyledForm>
             <StyledField type="text" placeholder="Email" name="email" />

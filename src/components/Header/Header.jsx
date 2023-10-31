@@ -12,7 +12,7 @@ export const Header = () => {
         <Logo className="logo"></Logo>
         {isLoggedIn &&
        ( <Nav style={{ fontFamily: 'Montserrat Alternates, sans-serif' }}>
-            <NavLink className="nav-link" to="/">Головна</NavLink>
+            <NavLink className="nav-link" to="/main">Головна</NavLink>
             <NavLink className="nav-link" to="/list_of_chats">Чати</NavLink>
             <NavLink className="nav-link" to="/profile">Профіль</NavLink>
             <NavLink className="nav-link" href="">Правила</NavLink>

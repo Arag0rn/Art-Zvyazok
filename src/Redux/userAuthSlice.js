@@ -3,8 +3,8 @@ import { logIn, logOut, refreshUser, register } from "components/Api";
 
 
 const initialState = {
-  user: { name: null, email: null },
-  token: null,
+  user: {},
+  token: {accessToken: null, refreshToken: null},
   isLoggedIn: false,
   isRefreshing: false,
 };
@@ -21,7 +21,8 @@ const userEmailSlice = createSlice({
     })
     builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.token.accessToken = action.payload.token.accessToken.token;
+      state.token.refreshToken = action.payload.token.refreshToken;
       state.isLoggedIn = true;
     })
     builder.addCase(logOut.fulfilled, (state, action) => {
@@ -30,7 +31,9 @@ const userEmailSlice = createSlice({
       state.isLoggedIn = false;
     })
     builder.addCase(refreshUser.fulfilled, (state, action) => {
-      state.user = action.payload;
+      state.user = action.payload.user;
+      state.token.accessToken = action.payload.token.accessToken.token;
+      state.token.refreshToken = action.payload.token.refreshToken;
       state.isLoggedIn = true;
       state.isRefreshing = false;
     })
