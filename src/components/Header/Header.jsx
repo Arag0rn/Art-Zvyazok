@@ -4,9 +4,7 @@ import { useAuth } from "Redux/hooks/useAuth";
 
 export const Header = () => {
     const { isLoggedIn } = useAuth();
-    console.log('====================================');
-    console.log(isLoggedIn);
-    console.log('====================================');
+
     return <HeaderSty className="header">
     <HeaderContainer className="container header-container">
         <Logo className="logo"></Logo>

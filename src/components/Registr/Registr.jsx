@@ -5,9 +5,11 @@ import { ReactComponent as GoogleIcon } from "./devicon_google.svg"
 import { useNavigate } from 'react-router-dom';
 import { useDispatch} from "react-redux";
 import * as Yup from 'yup';
-import { logIn } from 'components/Api';
-// import { setEmail } from 'Redux/userEmailSlice';
-
+import { updateUserData } from 'Redux/actions';
+import { useState } from 'react';
+import { StyledBtn, Styledlabel2 } from 'components/Auth/Auth.styled';
+import  iconeye from "../Auth/show_icon.svg"
+import hidepas from "../Auth/hide_icon.svg"
 
 const validationSchema1 = Yup.object({
   email: Yup.string()
@@ -27,6 +29,7 @@ const validationSchema1 = Yup.object({
 
 export const Registr = ({onRegClick, onRegOpen}) => {
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
 
 
   const navigate  = useNavigate();
@@ -41,8 +44,7 @@ export const Registr = ({onRegClick, onRegOpen}) => {
           validationSchema={validationSchema1}
           onSubmit={(values, actions) => {
             console.log('Submitted:', values);
-            // dispatch(setEmail(values));
-            dispatch(logIn(values));
+            dispatch(updateUserData(values));
             actions.resetForm();
             navigate('/profile')
           }}
@@ -50,7 +52,20 @@ export const Registr = ({onRegClick, onRegOpen}) => {
           <StyledForm>
             <StyledField type="text" placeholder="Email" name="email" />
             <ErMessName name="email" component="div"/>
-            <StyledField type="password" placeholder="Пароль" name="password" />
+            <Styledlabel2 htmlFor="password"><StyledField type={showPassword ? 'text' : 'password'} 
+                         placeholder="Пароль" 
+                         name="password" 
+                         style={{position: 'relative'}}
+                         />
+  <StyledBtn
+              onClick={() => setShowPassword(!showPassword)} 
+            >
+              {showPassword ? (
+                     <img src={iconeye}  width={18} height={18}alt="Hide Password" />
+                  ) : (
+                    <img src={hidepas} IconEye width={18} height={18}alt="Show Password" />
+                  )}
+            </StyledBtn></Styledlabel2>
             <ErMessPass name="password" component="div" />
             <EnterBtn className="btn enter-btn" type="submit">
               Продовжити

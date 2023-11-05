@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { logIn, logOut, refreshUser, register } from "components/Api";
+import { updateUserData } from "./actions";
 
 
 const initialState = {
@@ -14,12 +15,13 @@ const userEmailSlice = createSlice({
   initialState: initialState,
   extraReducers: (builder) => {
     //fullfilled
-    builder.addCase(register.fulfilled, (state, action) => {
+    builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.token.accessToken = action.payload.token.accessToken.token;
+      state.token.refreshToken = action.payload.token.refreshToken;
       state.isLoggedIn = true;
     })
-    builder.addCase(logIn.fulfilled, (state, action) => {
+    builder.addCase(register.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token.accessToken = action.payload.token.accessToken.token;
       state.token.refreshToken = action.payload.token.refreshToken;
@@ -37,6 +39,12 @@ const userEmailSlice = createSlice({
       state.isLoggedIn = true;
       state.isRefreshing = false;
     })
+    builder.addCase(updateUserData, (state, action) => {
+       state.user = { ...state.user, ...action.payload };
+        state.isLoggedIn = true;
+
+
+    });
     //pending
     builder.addCase(refreshUser.pending, (state) => {
       state.isRefreshing = true;

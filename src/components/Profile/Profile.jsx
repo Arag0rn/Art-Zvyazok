@@ -8,12 +8,13 @@ import { ReactComponent as Telegram } from "../ContinueReg/telegram.svg"
 import { ReactComponent as Spotify } from "../ContinueReg/spotify.svg"      
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
-// import { RegNewUser } from "components/Api";
 import { getUser} from "Redux/selectors";
+import { register } from "components/Api";
+
 
 
 const validationSchema1 = Yup.object({
-   nickname: Yup.string()
+  username: Yup.string()
    .min(2, 'мінімум 2 символи')
    .max(25, 'максимум 25 символів')
    .matches(/^[a-zA-Zа-яА-ЯёЁіІїЇєЄґҐ']{2,25}$/, 'Допускаються лише латинські та українські букви')
@@ -24,36 +25,38 @@ const validationSchema1 = Yup.object({
 
 export const Profile = ()=> {
   const dispatch = useDispatch();
+
   const user = useSelector(getUser);
-  // useEffect(() => {
-  //   dispatch(RegNewUser());
-  // }, [dispatch])
-  
+
+  const handleSubmit = (values) => {
+    const data = { ...user.user, ...values };
+    dispatch(register(data));
+  }
+
+
+
  return (
     <ProfCard>
       <Formik
            initialValues={{
-            toggle: false,
-            checked: [],
-            nickname: '',
+            isRemote: false,
+            username: '',
             city: '',
             instagram: '',
             discord: '',
             telegram: '',
             spotify: '',
-            email: `${user.email}`,
          
           }}
           validationSchema={validationSchema1}
-            onSubmit={(values, actions) => {
-              // dispatch(RegNewUser(values));
-              // RegNewUser()
-            actions.resetForm();
+          onSubmit={(values, actions) => {
+            handleSubmit(values)
+            actions.resetForm(values);
           }}
         >
           <StyledForm>
-            <StyledField type="text" placeholder="Nickname" name="nickname"/>
-            <ErMessName name="nickname" component="div"/>
+            <StyledField type="text" placeholder="Nickname" name="username"/>
+            <ErMessName name="username" component="div"/>
             <SelelectProf className="selectProf" id="single">
               <option value="">--Спеціалізація--</option>
               <option value="value 1">Музикант</option>
@@ -62,7 +65,7 @@ export const Profile = ()=> {
             </SelelectProf>
             <StyledField type="text" placeholder="Місто" name="city"/>
             <UnderSellectTxt className="underSellectTxt">
-              <CheckBox type="checkbox" name="toggle"/>
+              <CheckBox type="checkbox" name="isRemote"/>
               <CheckTxt className="checkTxt">Я можу працювати дистанційно</CheckTxt>
             </UnderSellectTxt>
             <StyledTextarea
@@ -84,7 +87,7 @@ export const Profile = ()=> {
               <LinkField className="linkInput" type="text" placeholder="Spotify" name="spotify"/>
             </LinkBox>
 
-            <EnterBtn className="btn enter-btn">Зареєструватися</EnterBtn>
+            <EnterBtn className="btn enter-btn" type="submit">Зареєструватися</EnterBtn>
           </StyledForm>
         </Formik>
     </ProfCard>

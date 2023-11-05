@@ -1,11 +1,14 @@
 import { Formik } from 'formik';
 import { H1, RegistrDiv, StyledForm, Button, EnterBtn, StyledField, DescrTxt, UnderBtnBox,
-UnderBtnTxt, RegistTxt, LineSvg, ErMessName, ErMessPass} from './Auth.styled';
+UnderBtnTxt, RegistTxt, LineSvg, ErMessName, ErMessPass, StyledBtn, Styledlabel2} from './Auth.styled';
 import { ReactComponent as GoogleIcon } from "./devicon_google.svg"
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logIn } from 'components/Api';
-import { selectToken } from 'Redux/selectors';
+import { useState } from 'react';
+import  iconeye from "./show_icon.svg"
+import hidepas from "./hide_icon.svg"
+
 
 const validationSchema1 = Yup.object({
   email: Yup.string()
@@ -25,9 +28,10 @@ const validationSchema1 = Yup.object({
 
 
 export const Auth = ({onRegClick, onRegOpen}) => {
+
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
-  const token = useSelector(selectToken)
 
 
     return (
@@ -52,8 +56,23 @@ export const Auth = ({onRegClick, onRegOpen}) => {
           <StyledForm>
             <StyledField type="text" placeholder="Email" name="email" />
             <ErMessName name="email" component="div"/>
-            <StyledField type="password" placeholder="Пароль" name="password" />
+            <Styledlabel2 htmlFor="password"><StyledField type={showPassword ? 'text' : 'password'} 
+                         placeholder="Пароль" 
+                         name="password" 
+                         style={{position: 'relative'}}
+                         />
+  <StyledBtn
+              onClick={() => setShowPassword(!showPassword)} 
+            >
+              {showPassword ? (
+                     <img src={iconeye}  width={18} height={18}alt="Hide Password" />
+                  ) : (
+                    <img src={hidepas} IconEye width={18} height={18}alt="Show Password" />
+                  )}
+            </StyledBtn></Styledlabel2>
+
             <ErMessPass name="password" component="div" />
+          
             <EnterBtn className="btn enter-btn" type="submit">
             
               Увійти

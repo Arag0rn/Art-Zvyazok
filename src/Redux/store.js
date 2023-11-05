@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { userReducer } from "./userProfileSlice";
+
 import { userEmailReducer } from "./userAuthSlice";
 // import { updateUserTimestampsMiddleware } from "./middleware";
 import storage from 'redux-persist/lib/storage';
@@ -22,7 +22,6 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    // user: userReducer,
     user: persistReducer(authPersistConfig, userEmailReducer),
 
   },

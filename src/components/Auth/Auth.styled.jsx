@@ -163,8 +163,24 @@ export const LineSvg = styled(Line)`
     right: -210px;
 `
 
+export const StyledBtn = styled.div`
+position: absolute;
+background-color: transparent;
+border: none;
+top: 30%;
+right: 4%;
+cursor: pointer;
+`
 
 
-
-
+export const Styledlabel2 = styled.label`
+position: relative;
+width: 100%;
+display: flex;
+font-weight: bold;
+color: white;
+flex-direction: column;
+gap: 10px;
+align-items: center;
+`
 

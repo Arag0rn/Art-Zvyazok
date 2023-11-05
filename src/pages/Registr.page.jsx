@@ -1,4 +1,4 @@
-import { AuthContinue } from "components/ContinueReg/ContinueReg";
+// import { AuthContinue } from "components/ContinueReg/ContinueReg";
 import { Registr } from "components/Registr/Registr";
 import { useState } from "react";
 import { Auth } from "components/Auth/Auth";

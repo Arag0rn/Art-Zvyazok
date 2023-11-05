@@ -18,9 +18,9 @@ export const App = () => {
 
   
 
-  // useEffect(() => {
-  //   dispatch(refreshUser(token));
-  // }, [dispatch, token]);
+  useEffect(() => {
+    dispatch(refreshUser(token));
+  }, [dispatch, token]);
 
 
   return (
@@ -30,11 +30,11 @@ export const App = () => {
         <Route path="login"  element={
           <RestrictedRoute redirectTo="/main" component={<EnterPage />}  />} />
         <Route path="/profile" element={
-          <PrivateRoute redirectTo="/" component={<ProfilePage />} />} /> 
+          <PrivateRoute redirectTo="/login" component={<ProfilePage />} />} /> 
         <Route path="/list_of_chats" element={
-          <PrivateRoute redirectTo="/" component={<ListOfChatsPage />} />} />          
+          <PrivateRoute redirectTo="/login" component={<ListOfChatsPage />} />} />          
        <Route path="/main" element={
-          <PrivateRoute redirectTo="/" component={<MainPage />} />} />
+          <PrivateRoute redirectTo="/login" component={<MainPage />} />} />
         </Route>
     </Routes>
   );
