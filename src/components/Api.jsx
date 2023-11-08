@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 // import { getUser } from "Redux/selectors";
 
 console.log('TEST PAGE');
- axios.defaults.baseURL = "https://localhost:7257/";
+ axios.defaults.baseURL = "https://art-connect-500c3ee8c10c.herokuapp.com/";
  axios.defaults.headers.common.Authorization = `oauth2`;
 
 
@@ -142,7 +142,7 @@ export const GetAll = createAsyncThunk(
   // export const GetNewUser = async () => {
   //   try {
   //     const response = await axios.get(
-  //       "https://localhost:7257/api/User/all",
+  //       "https://art-connect-500c3ee8c10c.herokuapp.com/api/User/all",
     
   //       {
   //           headers: {
