@@ -14,7 +14,7 @@ import {
   CheckBox,
   ErMessName,
 } from './Profile.styled';
-import { ReactComponent as Instagram } from '../ContinueReg/instagram.svg';
+// import { ReactComponent as Instagram } from '../ContinueReg/instagram.svg';
 import { ReactComponent as Discord } from '../ContinueReg/discord.svg';
 import { ReactComponent as Telegram } from '../ContinueReg/telegram.svg';
 import { ReactComponent as Spotify } from '../ContinueReg/spotify.svg';
@@ -87,7 +87,7 @@ export const Profile = () => {
           />
           <LinksH3 className="linksHead">Посилання на соцмережі:</LinksH3>
           <LinkBox className="linkBox">
-            <Instagram></Instagram>
+            {/* <Instagram></Instagram> */}
             <LinkField
               className="linkInput"
               type="text"
