@@ -17,7 +17,7 @@ import {
   CheckBox,
   ErMessName,
 } from './ContinueReg.styled';
-import { ReactComponent as Instagram } from './instagram.svg';
+// import { ReactComponent as Instagram } from './instagram.svg';
 import { ReactComponent as Discord } from './discord.svg';
 import { ReactComponent as Telegram } from './telegram.svg';
 import { ReactComponent as Spotify } from './spotify.svg';
@@ -85,7 +85,7 @@ export const AuthContinue = () => {
           />
           <LinksH3 className="linksHead">Посилання на соцмережі:</LinksH3>
           <LinkBox className="linkBox">
-            <Instagram></Instagram>
+            {/* <Instagram></Instagram> */}
             <LinkField
               className="linkInput"
               type="text"
