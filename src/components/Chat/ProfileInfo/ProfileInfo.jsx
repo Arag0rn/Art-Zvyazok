@@ -1,7 +1,7 @@
-import { ReactComponent as Instagram } from '../../ContinueReg/instagram.svg';
-import { ReactComponent as Discord } from '../../ContinueReg/discord.svg';
-import { ReactComponent as Telegram } from '../../ContinueReg/telegram.svg';
-import { ReactComponent as Spotify } from '../../ContinueReg/spotify.svg';
+import { ReactComponent as Instagram } from '../../images/Instagram.svg';
+import { ReactComponent as Discord } from '../../images/discord.svg';
+import { ReactComponent as Telegram } from '../../images/telegram.svg';
+import { ReactComponent as Spotify } from '../../images/spotify.svg';
 import profileImg from '../../Chat/profimg.png';
 import {
   MediaList,
