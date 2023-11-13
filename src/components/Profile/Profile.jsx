@@ -15,9 +15,9 @@ import {
   ErMessName,
 } from './Profile.styled';
 // import { ReactComponent as Instagram } from '../ContinueReg/instagram.svg';
-import { ReactComponent as Discord } from '../ContinueReg/discord.svg';
-import { ReactComponent as Telegram } from '../ContinueReg/telegram.svg';
-import { ReactComponent as Spotify } from '../ContinueReg/spotify.svg';
+// import { ReactComponent as Discord } from '../ContinueReg/discord.svg';
+// import { ReactComponent as Telegram } from '../ContinueReg/telegram.svg';
+// import { ReactComponent as Spotify } from '../ContinueReg/spotify.svg';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from 'Redux/selectors/authSelectors';
@@ -94,21 +94,21 @@ export const Profile = () => {
               placeholder="Instagram"
               name="instagram"
             />
-            <Discord></Discord>
+            {/* <Discord></Discord> */}
             <LinkField
               className="linkInput"
               type="text"
               placeholder="Discord"
               name="discord"
             />
-            <Telegram></Telegram>
+            {/* <Telegram></Telegram> */}
             <LinkField
               className="linkInput"
               type="text"
               placeholder="Telegram"
               name="telegram"
             />
-            <Spotify></Spotify>
+            {/* <Spotify></Spotify> */}
             <LinkField
               className="linkInput"
               type="text"
