@@ -1,6 +1,18 @@
 import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 
+export const ProfileSection = styled.div`
+    padding-top: 40px;
+    padding-bottom: 40px;
+`
+export const FotoBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+
+
+`
 export const ProfCard = styled.div`
     display: flex;
     margin: 0 auto;
@@ -15,8 +27,7 @@ export const ProfCard = styled.div`
 `
 export  const StyledForm = styled(Form)`
     position: relative;
-    margin-top: 24px;
-    width: 100%;
+    width: 822px;
     display: flex;
     gap: 24px;
     flex-direction: column;
@@ -25,6 +36,7 @@ export  const StyledForm = styled(Form)`
 `
 export const StyledField = styled(Field)`
     display: flex;
+    width: 600px;
     height: 48px;
     padding: 12px;
     justify-content: space-between;
@@ -40,9 +52,22 @@ export const StyledField = styled(Field)`
     font-weight: 400;
 
 `
+export const ProfField = styled.div`
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+
+`
+
+export const CheckBoxField = styled.div`
+    display: flex;
+    align-items: start;
+  
+
+`
 
 export const SelelectProf = styled.select`
-
+    width: 600px;
     display: flex;
     height: 48px;
     padding: 12px;
@@ -62,10 +87,10 @@ export const SelelectProf = styled.select`
 export const UnderSellectTxt = styled.div`
     display: flex;
     align-items: center;
-    justify-content: start;
     gap: 8px;
 `
 export const CheckBox = styled(Field)`
+    margin-left: 93px;
     background-color: transparent;
 `
 
@@ -83,11 +108,12 @@ export const CheckTxt = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-right: 100px;
+
     
 
 ` 
 export const StyledTextarea = styled(Field)`
+    width: 600px;
     display: flex;
     padding: 12px;
     height: 115px;
@@ -115,6 +141,8 @@ export const LinksH3 = styled.h3`
 `
 
 export const LinkField = styled(Field)`
+    margin-left: 8px;
+    width: 100%;
     background-color: transparent;
     border: 1px solid var(--input-stroke, #D0BFED);
     display: flex;
@@ -131,40 +159,21 @@ export const LinkField = styled(Field)`
 `
 
 export const LinkBox = styled.div`
-    display: grid;
-    grid-template-columns: 48px 162px 48px 162px;
+    display: flex;
+    flex-direction:column;
     row-gap: 16px;
     column-gap: 8px;
 `
-
-export const UserfotoBox = styled.div`
-    margin-top: 32px;
-    margin-bottom: 32px;
+export const SocialField = styled.div`
     display: flex;
-    align-items: center;
 
 `
-export const FotoTxt = styled.div`
-    position: relative;
-    color: #FFF;
-    font-family: Montserrat;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-left: 40px;
-    &::before {
-        content: '';
-        top:-40px;
-        left: -110px;
-        position: absolute;
-        width: 101px;
-        height: 101px;
-        border-radius: 50%;
-        border: 1px solid white;
-        z-index: 20;
 
-    }
+export const ButtonField = styled.div`
+    margin-top: 15px;   
+    display: flex;
+    gap: 39px;
+
 `
 
 export const EnterBtn = styled.button`
