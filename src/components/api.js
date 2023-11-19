@@ -6,15 +6,15 @@ console.log('TEST PAGE');
 axios.defaults.baseURL = 'https://art-connect-500c3ee8c10c.herokuapp.com';
 
 
-// const setAuthHeader = token => {
-//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-// };
+};
 
-// const clearAuthHeader = () => {
-//   axios.defaults.headers.common.Authorization = '';
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
 
-// };
+};
 
 export const logIn = createAsyncThunk(
   'auth/login',
@@ -23,7 +23,8 @@ export const logIn = createAsyncThunk(
 
     try {
       const res = await axios.post('/api/Auth/login', credentials);
-      // setAuthHeader(res.data.token);
+      setAuthHeader(res.data.token);
+      console.log(res.data.token.accessToken.token);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -88,64 +89,16 @@ export const GetAll = createAsyncThunk('auth/GetAll', async (_, thunkAPI) => {
   }
 });
 
-// export const RegNewEmail = createAsyncThunk(
-//   'email/addEmail',
-//   async (credentials, thunkAPI) => {
-//   try {
-//     const response = await axios.post('/Register/new', credentials);
-//     console.log(response.data)
-//     return response.data
-//     ;
-//   } catch (err) {
-//     console.error(err.toJSON())
-//   }
-// }
-// )
+export const editUser = createAsyncThunk(
+  'user/editUser',
+  async (data, thunkAPI) => {
+    try {
+      const response = await axios.put(`/api/User`, {
+      });
 
-// export const RegNewUser = createAsyncThunk(
-//   'user/addUser',
-//   async (credentials, thunkAPI) => {
-//     console.log(credentials);
-//   try {
-//     const response = await axios.post('/Register/new', {
-//       "id": 0,
-//       "createdAt": "2023-10-08T18:13:32.804Z",
-//       "updatedAt": "2023-10-08T18:13:32.804Z",
-//       "email": `${credentials.email}`,
-//       "username": `${credentials.nickname}`,
-//       "firstName": "string",
-//       "lastName": "string",
-//       "password": `${credentials.password}`
-
-//     });
-//     console.log(response.data)
-//     return response.data
-//     ;
-//   } catch (err) {
-//     console.error(err.toJSON())
-//   }
-// }
-// )
-
-// export const GetNewUser = async () => {
-//   try {
-//     const response = await axios.get(
-//       "https://localhost:7257/api/User/all",
-
-//       {
-//           headers: {
-//               Authorization: `Bearer ${apiKey}`,
-//               "Content-Type": 'application/json'
-//           }
-//       }
-//     );
-
-//     if (response.data.result === "success") {
-//       console.log(response.data);
-//     } else {
-//       console.log(response.data);
-//     }
-//   } catch (error) {
-//     console.error("Ошибка аутентификации", error);
-//   }
-// };
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+)

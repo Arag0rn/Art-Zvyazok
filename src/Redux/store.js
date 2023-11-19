@@ -16,7 +16,7 @@ import {
 import { chatReducer } from './chatSlice';
 
 const authPersistConfig = {
-  key: 'auth',
+  key: 'root',
   storage,
   whitelist: ['token'],
 };

@@ -8,7 +8,6 @@ import { ReactComponent as Instagram } from "../images/Instagram.svg";
 import { ReactComponent as Discord } from "../images/discord.svg";
 import { ReactComponent as Telegram } from "../images/telegram.svg";
 import { ReactComponent as Spotify } from "../images/spotify.svg";
-import { MainBtn } from "components/global-components/MainBtn/MainBtn";
 import { EnterBtn } from "components/Auth/Auth.styled";
 
 export const User = () => {
@@ -21,7 +20,7 @@ export const User = () => {
             
                 <div>
                 <img src={profileImg} alt="avatar" width="350" height="350" />
-                <EnterBtn >Завантажити фото</EnterBtn>
+               <EnterBtn style={{ marginTop: "40px" }}>Завантажити фото</EnterBtn>
                 <DeleteBtn>Видалити фото</DeleteBtn>
                 </div>
                
