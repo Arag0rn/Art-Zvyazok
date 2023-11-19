@@ -1,10 +1,11 @@
 {
   "files": {
     "main.css": "/Art-Zvyazok/static/css/main.8a72eb94.css",
-    "main.js": "/Art-Zvyazok/static/js/main.5d726123.js",
+    "main.js": "/Art-Zvyazok/static/js/main.84bdceef.js",
     "static/media/MontserratAlternates-Black.ttf": "/Art-Zvyazok/static/media/MontserratAlternates-Black.53c65844392081267032.ttf",
     "static/media/MontserratAlternates-Regular.ttf": "/Art-Zvyazok/static/media/MontserratAlternates-Regular.17043267bfe178ef8921.ttf",
     "static/media/Montserrat-Regular.ttf": "/Art-Zvyazok/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
+    "static/media/userfoto.png": "/Art-Zvyazok/static/media/userfoto.436d0d5dbd0ac3b066e0.png",
     "static/media/profimg.png": "/Art-Zvyazok/static/media/profimg.c14a6cdcb61ac382342e.png",
     "static/media/discord.svg": "/Art-Zvyazok/static/media/discord.e966bc00d31b03482a417f3fe2667438.svg",
     "static/media/Instagram.svg": "/Art-Zvyazok/static/media/Instagram.bbbd9b03717ab8be339c6285ad3a6540.svg",
@@ -21,10 +22,10 @@
     "static/media/arrow-down.svg": "/Art-Zvyazok/static/media/arrow-down.000c2d533af5f4f5830ce0cc182efa56.svg",
     "static/media/Line.svg": "/Art-Zvyazok/static/media/Line.2ff39ab83ca419d2c42b07038d1e4fd8.svg",
     "main.8a72eb94.css.map": "/Art-Zvyazok/static/css/main.8a72eb94.css.map",
-    "main.5d726123.js.map": "/Art-Zvyazok/static/js/main.5d726123.js.map"
+    "main.84bdceef.js.map": "/Art-Zvyazok/static/js/main.84bdceef.js.map"
   },
   "entrypoints": [
     "static/css/main.8a72eb94.css",
-    "static/js/main.5d726123.js"
+    "static/js/main.84bdceef.js"
   ]
 }
