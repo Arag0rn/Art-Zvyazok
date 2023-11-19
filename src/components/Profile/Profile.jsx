@@ -27,6 +27,7 @@ import { editUser, register } from 'components/api';
 import { DeleteBtn, UserCard, UserH3 } from 'components/User/User.styled';
 
 
+
 const validationSchema1 = Yup.object({
   username: Yup.string()
     .min(2, 'мінімум 2 символи')
@@ -44,6 +45,8 @@ export const Profile = () => {
   const ActivUser = useSelector(selectUser);
 
   const user = useSelector(getUser);
+  
+
 
   const handleSubmit = values => {
     const data = { ...user.user, ...values };
