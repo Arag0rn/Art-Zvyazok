@@ -1,6 +1,7 @@
 
 import { selectUser } from "Redux/selectors/authSelectors";
 import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import profileImg from './userfoto.png';
 import { DeleteBtn, UserAnswers, UserCard, UserH3, UserList, UserSection, UserSocial } from "./User.styled";
 import { ReactComponent as Instagram } from "../images/Instagram.svg";
@@ -8,9 +9,11 @@ import { ReactComponent as Discord } from "../images/discord.svg";
 import { ReactComponent as Telegram } from "../images/telegram.svg";
 import { ReactComponent as Spotify } from "../images/spotify.svg";
 import { MainBtn } from "components/global-components/MainBtn/MainBtn";
+import { EnterBtn } from "components/Auth/Auth.styled";
 
 export const User = () => {
     const ActivUser = useSelector(selectUser);
+    const navigate  = useNavigate();
     console.log(ActivUser);
     return (
         <UserSection>
@@ -18,7 +21,7 @@ export const User = () => {
             
                 <div>
                 <img src={profileImg} alt="avatar" width="350" height="350" />
-                <MainBtn className="btn downl-foto" type="submit">Завантажити фото</MainBtn>
+                <EnterBtn >Завантажити фото</EnterBtn>
                 <DeleteBtn>Видалити фото</DeleteBtn>
                 </div>
                
@@ -49,7 +52,7 @@ export const User = () => {
                     </li>
 
                     <li>
-                    <MainBtn>Редагувати</MainBtn>
+                    <EnterBtn type="button" onClick={() =>navigate('/user')}>Редагувати</EnterBtn>
                     </li>
                 </UserList>
             </UserCard>

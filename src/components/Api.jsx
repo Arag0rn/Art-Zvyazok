@@ -61,7 +61,6 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.user.token;
-    console.log(persistedToken);
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
@@ -70,7 +69,6 @@ export const refreshUser = createAsyncThunk(
       // setAuthHeader(persistedToken);
       console.log(persistedToken);
       const res = await axios.post('api/Token/refresh', persistedToken);
-     
       console.log(res.data);
    
       return res.data;
@@ -96,68 +94,3 @@ export const GetAll = createAsyncThunk(
   }
 );
 
-
-
-// export const RegNewEmail = createAsyncThunk(
-//   'email/addEmail',
-//   async (credentials, thunkAPI) => {
-//   try {
-//     const response = await axios.post('/Register/new', credentials);
-//     console.log(response.data) 
-//     return response.data
-//     ;
-//   } catch (err) {
-//     console.error(err.toJSON())
-//   }
-// }
-// )
-
-
-
-// export const RegNewUser = createAsyncThunk(
-//   'user/addUser',
-//   async (credentials, thunkAPI) => {
-//     console.log(credentials);
-//   try {
-//     const response = await axios.post('/Register/new', {
-//       "id": 0,
-//       "createdAt": "2023-10-08T18:13:32.804Z",
-//       "updatedAt": "2023-10-08T18:13:32.804Z",
-//       "email": `${credentials.email}`,
-//       "username": `${credentials.nickname}`,
-//       "firstName": "string",
-//       "lastName": "string",
-//       "password": `${credentials.password}`
-      
-//     });
-//     console.log(response.data) 
-//     return response.data
-//     ;
-//   } catch (err) {
-//     console.error(err.toJSON())
-//   }
-// }
-// )
-
-  // export const GetNewUser = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "https://art-connect-500c3ee8c10c.herokuapp.com/api/User/all",
-    
-  //       {
-  //           headers: {
-  //               Authorization: `Bearer ${apiKey}`,
-  //               "Content-Type": 'application/json' 
-  //           }
-  //       }
-  //     );
-  
-  //     if (response.data.result === "success") {
-  //       console.log(response.data);
-  //     } else {
-  //       console.log(response.data);
-  //     }
-  //   } catch (error) {
-  //     console.error("Ошибка аутентификации", error);
-  //   }
-  // };
