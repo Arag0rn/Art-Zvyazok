@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 console.log('TEST PAGE');
 axios.defaults.baseURL = 'https://art-connect-500c3ee8c10c.herokuapp.com';
-// axios.defaults.headers.common.Authorization = `oauth2`;
+
 
 // const setAuthHeader = token => {
 //   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -66,7 +66,7 @@ export const refreshUser = createAsyncThunk(
     try {
       // setAuthHeader(persistedToken);
       console.log(persistedToken);
-      const res = await axios.post('/pi/Token/refresh', persistedToken);
+      const res = await axios.post('/api/Token/refresh', persistedToken);
 
       console.log(res.data);
 

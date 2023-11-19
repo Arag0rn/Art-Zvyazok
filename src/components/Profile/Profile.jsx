@@ -1,5 +1,6 @@
-import { ProfCard } from './Profile.styled';
+import { ButtonField, CheckBoxField, FotoBox, ProfField, ProfileSection, SocialField } from './Profile.styled';
 import { Formik } from 'formik';
+import profileImg from '../User/userfoto.png';
 import {
   StyledForm,
   StyledField,
@@ -14,14 +15,17 @@ import {
   CheckBox,
   ErMessName,
 } from './Profile.styled';
-// import { ReactComponent as Instagram } from '../ContinueReg/instagram.svg';
-// import { ReactComponent as Discord } from '../ContinueReg/discord.svg';
-// import { ReactComponent as Telegram } from '../ContinueReg/telegram.svg';
-// import { ReactComponent as Spotify } from '../ContinueReg/spotify.svg';
+import { ReactComponent as Instagram } from "../images/Instagram.svg";
+import { ReactComponent as Discord } from "../images/discord.svg";
+import { ReactComponent as Telegram } from "../images/telegram.svg";
+import { ReactComponent as Spotify } from "../images/spotify.svg";
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from 'Redux/selectors/authSelectors';
+import { getUser, selectUser } from 'Redux/selectors/authSelectors';
 import { register } from 'components/api';
+import { DeleteBtn, UserCard, UserH3 } from 'components/User/User.styled';
+import { MainBtn } from 'components/global-components/MainBtn/MainBtn';
 
 const validationSchema1 = Yup.object({
   username: Yup.string()
@@ -36,6 +40,8 @@ const validationSchema1 = Yup.object({
 
 export const Profile = () => {
   const dispatch = useDispatch();
+  const navigate  = useNavigate();
+  const ActivUser = useSelector(selectUser);
 
   const user = useSelector(getUser);
 
@@ -45,83 +51,116 @@ export const Profile = () => {
   };
 
   return (
-    <ProfCard>
-      <Formik
-        initialValues={{
-          isRemote: false,
-          username: '',
-          city: '',
-          instagram: '',
-          discord: '',
-          telegram: '',
-          spotify: '',
-        }}
-        validationSchema={validationSchema1}
-        onSubmit={(values, actions) => {
-          handleSubmit(values);
-          actions.resetForm(values);
-        }}
-      >
-        <StyledForm>
-          <StyledField type="text" placeholder="Nickname" name="username" />
-          <ErMessName name="username" component="div" />
-          <SelelectProf className="selectProf" id="single">
-            <option value="">--Спеціалізація--</option>
-            <option value="value 1">Музикант</option>
-            <option value="value 2">Value 2</option>
-            <option value="value 3">Value 3</option>
-          </SelelectProf>
-          <StyledField type="text" placeholder="Місто" name="city" />
-          <UnderSellectTxt className="underSellectTxt">
-            <CheckBox type="checkbox" name="isRemote" />
-            <CheckTxt className="checkTxt">
-              Я можу працювати дистанційно
-            </CheckTxt>
-          </UnderSellectTxt>
-          <StyledTextarea
-            as="textarea"
-            name="profileOverview"
-            cols="30"
-            rows="10"
-            placeholder="Опис профілю"
-          />
-          <LinksH3 className="linksHead">Посилання на соцмережі:</LinksH3>
-          <LinkBox className="linkBox">
-            {/* <Instagram></Instagram> */}
-            <LinkField
-              className="linkInput"
-              type="text"
-              placeholder="Instagram"
-              name="instagram"
-            />
-            {/* <Discord></Discord> */}
-            <LinkField
-              className="linkInput"
-              type="text"
-              placeholder="Discord"
-              name="discord"
-            />
-            {/* <Telegram></Telegram> */}
-            <LinkField
-              className="linkInput"
-              type="text"
-              placeholder="Telegram"
-              name="telegram"
-            />
-            {/* <Spotify></Spotify> */}
-            <LinkField
-              className="linkInput"
-              type="text"
-              placeholder="Spotify"
-              name="spotify"
-            />
-          </LinkBox>
+   <ProfileSection>
+    <UserCard>
 
-          <EnterBtn className="btn enter-btn" type="submit">
-            Зареєструватися
-          </EnterBtn>
-        </StyledForm>
-      </Formik>
-    </ProfCard>
+<FotoBox>
+  <div>
+    <img src={profileImg} alt="avatar" width="350" height="350" />
+    <MainBtn type="submit">Завантажити фото</MainBtn>
+    <DeleteBtn>Видалити фото</DeleteBtn>
+  </div>
+    <DeleteBtn className="btn cancel-btn" type="submit">
+    Видалити профіль
+    </DeleteBtn>
+</FotoBox>
+
+
+<Formik
+  initialValues={{
+    isRemote: false,
+    username: ActivUser ? ActivUser.username : '',
+    city: ActivUser ? ActivUser.city : '',
+    description: ActivUser ? ActivUser.description : '',
+    instagram: ActivUser ? ActivUser.instagram : '',
+    discord: ActivUser ? ActivUser.discord : '',
+    telegram: ActivUser ? ActivUser.telegram : '',
+    spotify: ActivUser ? ActivUser.spotify : '',
+  }}
+  validationSchema={validationSchema1}
+  onSubmit={(values, actions) => {
+    handleSubmit(values);
+    actions.resetForm();
+    console.log('Form values after submission and reset:', values);
+    navigate('/profile')
+  }}
+>
+  <StyledForm>
+  <ProfField><UserH3>Nickname:</UserH3><StyledField type="text" name="username" placeholder={!ActivUser ? "Nickname" : ""}/></ProfField>
+    <ErMessName name="username" component="div" />
+    <ProfField><UserH3>Спеціалізація:</UserH3><SelelectProf className="selectProf" id="single">
+      <option value="">{ActivUser ? ActivUser.roles : '--Спеціалізація--'}</option>
+      <option value="value 1">Музикант</option>
+      <option value="value 2">Value 2</option>
+      <option value="value 3">Value 3</option>
+    </SelelectProf></ProfField>
+    <ProfField><UserH3>Місто:</UserH3><StyledField type="text"  name="city" /></ProfField>
+   <CheckBoxField><UserH3>Дистанційно:</UserH3> <UnderSellectTxt className="underSellectTxt">
+     <CheckBox type="checkbox" name="isRemote" />
+      <CheckTxt className="checkTxt">
+        Я можу працювати дистанційно
+      </CheckTxt>
+    </UnderSellectTxt></CheckBoxField>
+    
+    <ProfField><UserH3>Опис:</UserH3><StyledTextarea
+      name="description"
+      type="text"
+      component="textarea"
+      cols="30"
+      rows="10"
+      placeholder={!ActivUser ? "Опис профілю" : ""}
+    /></ProfField>
+    <LinksH3 className="linksHead">Посилання на соцмережі:</LinksH3>
+    <LinkBox className="linkBox">
+      <SocialField>
+      <Instagram></Instagram>
+      <LinkField
+        className="linkInput"
+        type="text"
+        placeholder="Instagram"
+        name="instagram"
+      />
+      </SocialField>
+      <SocialField>
+      <Discord></Discord>
+      <LinkField
+        className="linkInput"
+        type="text"
+        placeholder="Discord"
+        name="discord"
+      />
+      </SocialField>
+      <SocialField>
+      <Telegram></Telegram>
+      <LinkField
+        className="linkInput"
+        type="text"
+        placeholder="Telegram"
+        name="telegram"
+      />
+      </SocialField>
+      <SocialField>
+      <Spotify></Spotify>
+      <LinkField
+        className="linkInput"
+        type="text"
+        placeholder="Spotify"
+        name="spotify"
+      />
+      </SocialField>
+    </LinkBox>
+    <ButtonField>
+    <EnterBtn className="btn save-btn" type="submit">
+      Зберегти зміни
+    </EnterBtn>
+
+    <DeleteBtn style={{ margin: 0 }} type="submit">
+      Скасувати зміни
+    </DeleteBtn>
+    </ButtonField>
+  </StyledForm>
+</Formik>
+</UserCard>
+   </ProfileSection>
   );
 };

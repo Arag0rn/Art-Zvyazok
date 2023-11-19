@@ -14,7 +14,7 @@ export const Header = () => {
             <NavLink className="nav-link" to="/list_of_chats">Чати</NavLink>
             <NavLink className="nav-link" to="/profile">Профіль</NavLink>
             <NavLink className="nav-link" href="">Правила</NavLink>
-            <NavLink className="nav-link" href="">Контакти</NavLink>
+            <NavLink className="nav-link" to="/user">Контакти</NavLink>
         </Nav>)}
     </HeaderContainer>
 </HeaderSty>

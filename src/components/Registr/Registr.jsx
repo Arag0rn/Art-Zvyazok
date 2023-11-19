@@ -46,7 +46,7 @@ export const Registr = ({onRegClick, onRegOpen}) => {
             console.log('Submitted:', values);
             dispatch(updateUserData(values));
             actions.resetForm();
-            navigate('/profile')
+            navigate('/user')
           }}
         >
           <StyledForm>

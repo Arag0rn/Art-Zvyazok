@@ -11,6 +11,7 @@ import { RestrictedRoute } from 'RestrictedRoute';
 import { selectToken } from 'Redux/selectors/authSelectors';
 import { Layout } from './Layout/Layout';
 import { GlobalStyle } from './GlobalStyle';
+import { UserPage } from 'pages/UserPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -26,13 +27,13 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<EnterPage />} />
           <Route
-            path="login"
+            path="/login"
             element={
               <RestrictedRoute redirectTo="/main" component={<EnterPage />} />
             }
           />
           <Route
-            path="/profile"
+            path="/user"
             element={
               <PrivateRoute redirectTo="/login" component={<ProfilePage />} />
             }
@@ -49,7 +50,17 @@ export const App = () => {
               <PrivateRoute redirectTo="/login" component={<MainPage />} />
             }
           />
+
+            <Route
+            path="/profile"
+            element={
+              <PrivateRoute redirectTo="/login" component={<UserPage />} />
+            }
+          />
+          
         </Route>
+      
+ 
       </Routes>
       <GlobalStyle />
     </>
