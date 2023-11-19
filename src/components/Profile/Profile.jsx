@@ -23,9 +23,9 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, selectUser } from 'Redux/selectors/authSelectors';
-import { register } from 'components/api';
+import { editUser, register } from 'components/api';
 import { DeleteBtn, UserCard, UserH3 } from 'components/User/User.styled';
-import { MainBtn } from 'components/global-components/MainBtn/MainBtn';
+
 
 const validationSchema1 = Yup.object({
   username: Yup.string()
@@ -47,7 +47,11 @@ export const Profile = () => {
 
   const handleSubmit = values => {
     const data = { ...user.user, ...values };
-    dispatch(register(data));
+    if (ActivUser.username) {
+      dispatch(editUser(data));
+    } else {
+      dispatch(register(data));
+    };
   };
 
   return (
@@ -57,7 +61,7 @@ export const Profile = () => {
 <FotoBox>
   <div>
     <img src={profileImg} alt="avatar" width="350" height="350" />
-    <MainBtn type="submit">Завантажити фото</MainBtn>
+    <EnterBtn style={{ marginTop: "40px" }}>Завантажити фото</EnterBtn>
     <DeleteBtn>Видалити фото</DeleteBtn>
   </div>
     <DeleteBtn className="btn cancel-btn" type="submit">
@@ -81,34 +85,35 @@ export const Profile = () => {
   onSubmit={(values, actions) => {
     handleSubmit(values);
     actions.resetForm();
-    console.log('Form values after submission and reset:', values);
     navigate('/profile')
   }}
 >
   <StyledForm>
-  <ProfField><UserH3>Nickname:</UserH3><StyledField type="text" name="username" placeholder={!ActivUser ? "Nickname" : ""}/></ProfField>
+  <ProfField><UserH3>Nickname:</UserH3><StyledField type="text" name="username" /></ProfField>
     <ErMessName name="username" component="div" />
     <ProfField><UserH3>Спеціалізація:</UserH3><SelelectProf className="selectProf" id="single">
-      <option value="">{ActivUser ? ActivUser.roles : '--Спеціалізація--'}</option>
+      {/* <option value="">{ActivUser ? ActivUser.roles : '--Спеціалізація--'}</option> */}
       <option value="value 1">Музикант</option>
       <option value="value 2">Value 2</option>
       <option value="value 3">Value 3</option>
     </SelelectProf></ProfField>
     <ProfField><UserH3>Місто:</UserH3><StyledField type="text"  name="city" /></ProfField>
-   <CheckBoxField><UserH3>Дистанційно:</UserH3> <UnderSellectTxt className="underSellectTxt">
-     <CheckBox type="checkbox" name="isRemote" />
-      <CheckTxt className="checkTxt">
-        Я можу працювати дистанційно
-      </CheckTxt>
-    </UnderSellectTxt></CheckBoxField>
-    
+    <CheckBoxField>
+  <UserH3>Дистанційно:</UserH3>
+  <UnderSellectTxt className="underSellectTxt">
+    <CheckBox type="checkbox" name="isRemote" />
+    <CheckTxt className="checkTxt">
+      Я можу працювати дистанційно
+    </CheckTxt>
+  </UnderSellectTxt>
+</CheckBoxField>
     <ProfField><UserH3>Опис:</UserH3><StyledTextarea
       name="description"
       type="text"
       component="textarea"
       cols="30"
       rows="10"
-      placeholder={!ActivUser ? "Опис профілю" : ""}
+      // placeholder={ActivUser.description : '' ? "Опис профілю" : ""}
     /></ProfField>
     <LinksH3 className="linksHead">Посилання на соцмережі:</LinksH3>
     <LinkBox className="linkBox">
