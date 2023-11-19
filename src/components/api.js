@@ -23,7 +23,7 @@ export const logIn = createAsyncThunk(
 
     try {
       const res = await axios.post('/api/Auth/login', credentials);
-      setAuthHeader(res.data.token);
+      setAuthHeader(res.data.token.accessToken.token);
       console.log(res.data.token.accessToken.token);
       return res.data;
     } catch (error) {
@@ -90,13 +90,13 @@ export const GetAll = createAsyncThunk('auth/GetAll', async (_, thunkAPI) => {
 });
 
 export const editUser = createAsyncThunk(
-  'user/editUser',
+  'auth/editUser',
   async (data, thunkAPI) => {
     try {
-      const response = await axios.put(`/api/User`, {
-      });
-
+      const response = await axios.put(`/api/User`, data);
+      console.log(response.data);
       return response.data;
+      
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

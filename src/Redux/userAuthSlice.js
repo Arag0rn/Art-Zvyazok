@@ -27,11 +27,17 @@ const userEmailSlice = createSlice({
       state.isLoggedIn = true;
     });
     builder.addCase(editUser.fulfilled, (state, action) => {
-      state.user = action.payload.user;
-      state.token.accessToken = action.payload.token.accessToken.token;
-      state.token.refreshToken = action.payload.token.refreshToken;
-      state.isLoggedIn = true;
-    });
+
+      return {
+        ...state,
+        user: action.payload.user,
+        token: {
+          accessToken: action.payload.token.accessToken.token,
+          refreshToken: action.payload.token.refreshToken,
+        },
+        isLoggedIn: true,
+      };
+    })
     builder.addCase(logOut.fulfilled, (state, action) => {
       state.user = { name: null, email: null };
       state.token = null;
