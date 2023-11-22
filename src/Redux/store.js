@@ -18,7 +18,7 @@ import { chatReducer } from './chatSlice';
 const authPersistConfig = {
   key: 'root',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'user'],
 };
 
 export const store = configureStore({

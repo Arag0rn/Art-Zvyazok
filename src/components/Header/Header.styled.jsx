@@ -23,12 +23,13 @@ export const HeaderContainer = styled.div`
 `
 
 export const Nav = styled.nav`
+position: relative;
     display: flex;
-    column-gap: 75px;
+    column-gap: 108px;
 `
 export const NavLink = styled(Link)`
     color: var(--btn-txt, #FFF);
-    font-family: Montserrat Alternates;
+    font-family: Montserrat;
     font-size: 20px;
     font-weight: 400;
     line-height: normal;
@@ -36,4 +37,24 @@ export const NavLink = styled(Link)`
     &:hover {
     transform: scale(110%);
 }
+`
+
+export const ProfMod = styled.div`
+    position: absolute;
+    top: 27px;
+    right: 0px;
+    border-radius: 15px;
+    background: var(--body-txt, #FFF);
+    display: none;
+    flex-direction:column;
+    width: 232px;
+    padding: 10px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+`
+
+export const ProfBox = styled.div`
+    position: relative;
+  
 `
