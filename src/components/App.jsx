@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { EnterPage } from 'pages/EnterPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import { ChatPage } from 'pages/ChatPage';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from './api';
 import { MainPage } from 'pages/MainPage';
