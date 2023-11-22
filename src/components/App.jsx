@@ -8,18 +8,17 @@ import { refreshUser } from './api';
 import { MainPage } from 'pages/MainPage';
 import { PrivateRoute } from 'PrivateRoute';
 import { RestrictedRoute } from 'RestrictedRoute';
-import { selectToken } from 'Redux/selectors/authSelectors';
+
 import { Layout } from './Layout/Layout';
 import { GlobalStyle } from './GlobalStyle';
 import { UserPage } from 'pages/UserPage';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const token = useSelector(selectToken);
 
   useEffect(() => {
-    dispatch(refreshUser(token));
-  }, [dispatch, token]);
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <>
