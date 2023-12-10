@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 // import { getUser } from "Redux/selectors";
 
 console.log('TEST PAGE');
-axios.defaults.baseURL = 'https://art-connect-500c3ee8c10c.herokuapp.com';
+axios.defaults.baseURL = 'https://ctc.fly.dev';
 
 
 const setAuthHeader = token => {
@@ -36,7 +36,7 @@ export const register = createAsyncThunk(
   async (newUser, thunkAPI) => {
     console.log(newUser);
     try {
-      const res = await axios.post('/api/Register/new', newUser);
+      const res = await axios.post('/api/Auth/register', newUser);
       console.log(res);
       return res.data;
     } catch (error) {
