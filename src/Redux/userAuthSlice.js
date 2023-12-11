@@ -48,7 +48,7 @@ const userEmailSlice = createSlice({
     });
     builder.addCase(refreshUser.fulfilled, (state, action) => {
       state.user = action.payload.user;
-      state.token.accessToken = action.payload.token.accessToken.token;
+      state.token.accessToken = action.payload.token;
       state.token.refreshToken = action.payload.token.refreshToken;
       state.isLoggedIn = true;
       state.isRefreshing = false;
