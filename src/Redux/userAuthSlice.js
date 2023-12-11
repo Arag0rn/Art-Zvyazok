@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { logIn, logOut, refreshUser, register, editUser} from 'components/api';
 import { updateUserData } from './actions';
+import { toast } from "react-toastify";
 
 const initialState = {
   user: {},
   token: { accessToken: null, refreshToken: null },
   isLoggedIn: false,
   isRefreshing: false,
+  isError: null,
 };
 
 const userEmailSlice = createSlice({
@@ -19,6 +21,7 @@ const userEmailSlice = createSlice({
       state.token.accessToken = action.payload.token.accessToken.token;
       state.token.refreshToken = action.payload.token.refreshToken;
       state.isLoggedIn = true;
+      toast.success("Ласкаво просимо!")
     });
     builder.addCase(register.fulfilled, (state, action) => {
       state.user = action.payload.user;
@@ -27,7 +30,7 @@ const userEmailSlice = createSlice({
       state.isLoggedIn = true;
     });
     builder.addCase(editUser.fulfilled, (state, action) => {
-
+      toast.success("Данні змінено")
       return {
         ...state,
         user: action.payload.user,
@@ -61,6 +64,11 @@ const userEmailSlice = createSlice({
     //rejected
     builder.addCase(refreshUser.rejected, state => {
       state.isRefreshing = false;
+    });
+    builder.addCase(logIn.rejected, (state, action) => {
+      state.isRefreshing = false;
+      state.isError = action.payload;
+     
     });
   },
 });

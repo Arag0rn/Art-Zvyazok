@@ -1,0 +1,39 @@
+Application name	Art-Zvyazok
+API key	99acc054925fce6ea6def0a629729eb0
+Shared secret	134d1ca8106a4949b69e97082835298e
+Registered to	Crowwing2
+
+
+TopArtists
+: 
+artists
+: 
+@attr
+: 
+{page: '1', perPage: '50', totalPages: '114468', total: '5723371'}
+artist
+: 
+Array(50)
+0
+: 
+image
+: 
+(5) [{…}, {…}, {…}, {…}, {…}]
+listeners
+: 
+"4379641"
+mbid
+: 
+"20244d07-534f-4eff-b4d4-930878889970"
+name
+: 
+"Taylor Swift"
+playcount
+: 
+"1911333616"
+streamable
+: 
+"0"
+url
+: 
+"https://www.last.fm/music/Taylor+Swift"

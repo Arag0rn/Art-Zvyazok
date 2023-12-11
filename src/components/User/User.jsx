@@ -9,11 +9,27 @@ import { ReactComponent as Discord } from "../images/discord.svg";
 import { ReactComponent as Telegram } from "../images/telegram.svg";
 import { ReactComponent as Spotify } from "../images/spotify.svg";
 import { EnterBtn } from "components/Auth/Auth.styled";
+import {useEffect} from "react";
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 export const User = () => {
+
     const ActivUser = useSelector(selectUser);
     const navigate  = useNavigate();
-    console.log(ActivUser);
+
+
+    const handleRefresh = () => {
+        
+    };
+    
+    useEffect(() => {
+        handleRefresh();
+    } );
+      
+  
+
     return (
         <UserSection>
             <UserCard>
@@ -51,10 +67,11 @@ export const User = () => {
                     </li>
 
                     <li>
-                    <EnterBtn type="button" onClick={() =>navigate('/user')}>Редагувати</EnterBtn>
+                    <EnterBtn type="button" onClick={() => navigate('/user')}>Редагувати</EnterBtn>
                     </li>
                 </UserList>
             </UserCard>
+            <ToastContainer autoClose={8000}/>
         </UserSection>
     )
 }

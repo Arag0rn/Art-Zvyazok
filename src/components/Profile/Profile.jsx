@@ -25,6 +25,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser, selectUser } from 'Redux/selectors/authSelectors';
 import { editUser, register } from 'components/api';
 import { DeleteBtn, UserCard, UserH3 } from 'components/User/User.styled';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -45,6 +47,7 @@ export const Profile = () => {
   const ActivUser = useSelector(selectUser);
 
   const user = useSelector(getUser);
+  
   
 
 
@@ -169,6 +172,7 @@ export const Profile = () => {
   </StyledForm>
 </Formik>
 </UserCard>
+<ToastContainer autoClose={8000}/>
    </ProfileSection>
   );
 };

@@ -37,6 +37,7 @@ export const register = createAsyncThunk(
     console.log(newUser);
     try {
       const res = await axios.post('/api/Auth/register', newUser);
+      setAuthHeader(res.data.token.accessToken.token);
       console.log(res);
       return res.data;
     } catch (error) {

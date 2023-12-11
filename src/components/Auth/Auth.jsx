@@ -23,6 +23,8 @@ import { logIn } from 'components/api';
 import { useState } from 'react';
 import iconeye from './show_icon.svg';
 import hidepas from './hide_icon.svg';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const validationSchema1 = Yup.object({
   email: Yup.string()
@@ -117,6 +119,7 @@ export const Auth = ({ onRegClick, onRegOpen }) => {
           Зареєструватися
         </RegistTxt>
       </UnderBtnBox>
+      <ToastContainer autoClose={8000}/>
     </RegistrDiv>
   );
 };

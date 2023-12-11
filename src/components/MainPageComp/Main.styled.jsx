@@ -52,18 +52,22 @@ export const NewsHead = styled.h2`
 
 export const NewsContainer = styled.div`
     display: grid;
-    grid-template-columns: 664px 316px 316px;
-    grid-template-rows: 273px 273px;
+    grid-template-columns: 664px 316px 316px; 
+    grid-auto-rows: 273px;
     gap: 32px;
-   
+
+  
 `;
 
 export const NewsCell = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     flex-shrink: 0;
     border-radius: 30px;
     background: #ABABAB;
+
    `
  
