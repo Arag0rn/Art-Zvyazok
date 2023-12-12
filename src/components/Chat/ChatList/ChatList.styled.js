@@ -1,12 +1,12 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-export const ChatItem = styled.li`
-  padding: 16px;
-  cursor: pointer;
-`;
-
-export const ChatItemText = styled.span`
+export const ChatItemText = styled(NavLink)`
+  display: block;
+  padding: 17px 16px;
   background: var(--pink-btn);
+  cursor: pointer;
+
   -webkit-background-clip: text;
   color: transparent;
   font-family: Montserrat;
@@ -14,14 +14,12 @@ export const ChatItemText = styled.span`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  color: #160132;
 
-  &:hover {
+  &:hover,
+  &.active {
     background: var(--pink-btn);
     -webkit-background-clip: text;
     color: transparent;
   }
-
-  ${props => {
-    return props.$isActive || 'color: #160132;';
-  }};
 `;
