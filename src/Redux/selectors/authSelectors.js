@@ -1,5 +1,7 @@
 export const getUser = state => state.user;
 
+export const selectUserId = state => state.user.user.id;
+
 export const getEmail = state => state.email;
 
 export const selectIsLoggedIn = state => state.user.isLoggedIn;

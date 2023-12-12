@@ -13,16 +13,14 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { chatReducer } from './chatSlice';
 import { userTopArtistsReducer } from './newsSlice';
+import { chatReducer } from './chat/chatSlice';
 
 const authPersistConfig = {
   key: 'root',
   storage,
   whitelist: ['token', 'user'],
 };
-
-
 
 export const store = configureStore({
   reducer: {
@@ -34,7 +32,7 @@ export const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      }
+      },
     }),
   devTools: process.env.NODE_ENV === 'development',
 });

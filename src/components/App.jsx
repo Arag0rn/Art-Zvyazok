@@ -44,22 +44,25 @@ export const App = () => {
             }
           />
           <Route
+            path="/list_of_chats/:id"
+            element={
+              <PrivateRoute redirectTo="/login" component={<ChatPage />} />
+            }
+          />
+          <Route
             path="/main"
             element={
               <PrivateRoute redirectTo="/login" component={<MainPage />} />
             }
           />
 
-            <Route
+          <Route
             path="/profile"
             element={
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
           />
-          
         </Route>
-      
- 
       </Routes>
       <GlobalStyle />
     </>

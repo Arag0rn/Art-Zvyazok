@@ -5,15 +5,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 console.log('TEST PAGE');
 axios.defaults.baseURL = 'https://ctc.fly.dev';
 
-
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-
 };
 
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
-
 };
 
 export const logIn = createAsyncThunk(
@@ -66,13 +63,15 @@ export const refreshUser = createAsyncThunk(
     }
 
     try {
-     setAuthHeader(persistedToken.accessToken);
+      setAuthHeader(persistedToken.accessToken);
       console.log(persistedToken);
       const res = await axios.post('/api/Token/refresh', persistedToken);
 
       console.log(res.data);
 
-      return res.data;
+      const resUser = await axios.get('/api/User/details');
+
+      return { token: res.data, user: resUser };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
@@ -96,9 +95,8 @@ export const editUser = createAsyncThunk(
     try {
       const response = await axios.put(`/api/User`, data);
       return response.data;
-
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-)
+);

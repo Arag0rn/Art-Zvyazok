@@ -1,6 +1,6 @@
-import { setChatType } from 'Redux/chatSlice';
 import { HeaderBox, HeaderLink } from './ChatListBoxHeader.styled';
 import { useDispatch, useSelector } from 'react-redux';
+import { setChatType } from 'Redux/chat/chatSlice';
 import { selectChatType } from 'Redux/selectors/chatSelectors';
 
 export const ChatListBoxHeader = () => {

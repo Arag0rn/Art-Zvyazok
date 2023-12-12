@@ -1,9 +1,22 @@
-import { ChatItem, ChatItemText } from './ChatList.styled';
+import { useSelector } from 'react-redux';
+import { ChatItemText } from './ChatList.styled';
+import { selectChatList } from 'Redux/selectors/chatSelectors';
+import { useLocation } from 'react-router-dom';
 
 export const ChatList = () => {
+  const chatList = useSelector(selectChatList);
+  const location = useLocation();
+
   return (
     <ul>
-      <ChatItem>
+      {chatList.map(({ topic, id }) => (
+        <li key={id}>
+          <ChatItemText to={`/list_of_chats/${id}`} state={location}>
+            {topic}
+          </ChatItemText>
+        </li>
+      ))}
+      {/* <ChatItem>
         <ChatItemText>Чат</ChatItemText>
       </ChatItem>
       <ChatItem>
@@ -14,7 +27,7 @@ export const ChatList = () => {
       </ChatItem>
       <ChatItem>
         <ChatItemText>Чат</ChatItemText>
-      </ChatItem>
+      </ChatItem> */}
     </ul>
   );
 };
