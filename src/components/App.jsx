@@ -44,7 +44,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/list_of_chats/:id"
+            path="/chat/:id"
             element={
               <PrivateRoute redirectTo="/login" component={<ChatPage />} />
             }

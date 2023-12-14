@@ -7,22 +7,41 @@ import {
   MainChatHeadBox,
 } from './ChatBox.styled';
 import { CurrentChat } from '../CurrentChat/CurrentChat';
-import { useSelector } from 'react-redux';
-import { selectChatType } from 'Redux/selectors/chatSelectors';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectActiveChatTopic,
+  selectChatType,
+  selectMemberaNumber,
+} from 'Redux/selectors/chatSelectors';
 import { CompanionAvatar } from '../CompanionAvatar/CompanionAvatar';
 import { InputForMess } from '../InputForMess/InputForMess';
+import { useEffect } from 'react';
+import { fetchActiveChat } from 'Redux/chat/chatOperations';
+import { useLocation } from 'react-router-dom';
 
 export const ChatBox = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
   const isGeneralChat = useSelector(selectChatType);
+  const chatTopic = useSelector(selectActiveChatTopic);
+  const membersNumber = useSelector(selectMemberaNumber);
+
+  useEffect(() => {
+    const parceLocation = location.pathname.split('/');
+    if (parceLocation[1] === 'chat') {
+      const chatId = parceLocation[2];
+      dispatch(fetchActiveChat(chatId));
+    }
+  }, [dispatch, location.pathname]);
 
   return (
     <MainChatBox isGeneralChat={isGeneralChat}>
       <MainChatHeadBox>
         <MainChatHead isGeneralChat={isGeneralChat}>
-          {isGeneralChat ? 'ЗАГАЛЬНИЙ ЧАТ' : 'ОСОБИСТИЙ ЧАТ'}
+          {isGeneralChat ? chatTopic : 'ОСОБИСТИЙ ЧАТ'}
         </MainChatHead>
         <ChatBoxSubtitle isGeneralChat={isGeneralChat}>
-          265 учасників
+          {isGeneralChat ? `${membersNumber} учасників` : 'У мережі'}
         </ChatBoxSubtitle>
         {!isGeneralChat && (
           <AvatarWrapper>

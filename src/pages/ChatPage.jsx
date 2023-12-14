@@ -13,7 +13,7 @@ export const ChatPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAll({ userId, isPublic: isPublic }));
+    dispatch(fetchAll(userId));
   }, [dispatch, userId, isPublic]);
 
   return (
