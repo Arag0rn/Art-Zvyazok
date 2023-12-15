@@ -1,11 +1,11 @@
-import { fetchAll } from './chatOperations';
+import { fetchAll, fetchActiveChat } from './chatOperations';
 
 const { createSlice } = require('@reduxjs/toolkit');
 
 const initialState = {
   chatList: [],
   isGeneralChat: true,
-  activeChatId: null,
+  activeChat: null,
   isLoading: false,
   error: null,
 };
@@ -33,8 +33,20 @@ const chatSlice = createSlice({
       state.isLoading = false;
       state.error = true;
     });
+    builder.addCase(fetchActiveChat.fulfilled, (state, action) => {
+      state.activeChat = action.payload;
+      state.isLoading = false;
+      state.error = false;
+    });
+    builder.addCase(fetchActiveChat.pending, state => {
+      state.isLoading = true;
+    });
+    builder.addCase(fetchActiveChat.rejected, state => {
+      state.isLoading = false;
+      state.error = true;
+    });
   },
 });
 
-export const { setChatType } = chatSlice.actions;
+export const { setChatType, setActiveChat } = chatSlice.actions;
 export const chatReducer = chatSlice.reducer;

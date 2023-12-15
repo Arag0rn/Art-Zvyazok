@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const HeaderBox = styled.div`
@@ -24,7 +25,7 @@ export const ChatHeader = styled.h3`
   line-height: normal;
 `;
 
-export const HeaderLink = styled.button`
+export const HeaderLink = styled(Link)`
   color: #160132;
   font-family: Montserrat Alternates;
   font-size: 18px;
@@ -33,19 +34,10 @@ export const HeaderLink = styled.button`
   line-height: normal;
 
   flex: 1;
+
+  display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-
-  /* &:hover {
-    background: #c7aee9;
-    border-radius: ${props => {
-    return props.side === 'left' ? '35px 35px 35px 0px' : '35px 35px 0px 35px';
-  }};
-  } */
 
   ${props => {
     if (props.isGeneralChat && props.side === 'left') {
