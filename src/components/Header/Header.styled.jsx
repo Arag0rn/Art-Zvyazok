@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
+
 export const HeaderSty = styled.div`
     background-color:  #1E0143;
     height: 98px;
@@ -39,20 +40,7 @@ export const NavLink = styled(Link)`
 }
 `
 
-export const ProfMod = styled.div`
-    position: absolute;
-    top: 27px;
-    right: 0px;
-    border-radius: 15px;
-    background: var(--body-txt, #FFF);
-    display: none;
-    flex-direction:column;
-    width: 232px;
-    padding: 10px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-`
+
 
 export const ProfBox = styled.div`
     position: relative;

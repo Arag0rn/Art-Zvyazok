@@ -1,19 +1,17 @@
-import { HeaderSty, Logo, HeaderContainer, Nav, NavLink, ProfMod, ProfBox } from "./Header.styled"
+import { HeaderSty, HeaderContainer, Nav, NavLink, ProfMod, ProfBox } from "./Header.styled"
 import '../../index';
 import { useAuth } from "Redux/hooks/useAuth";
 import { ReactComponent as Prof } from "./profile.svg";
-import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from "./LOGO.svg";
 import { useState } from "react";
+import { Modal } from "./Modal";
+
 
 export const Header = () => {
     const { isLoggedIn } = useAuth();
-    const [isProfModVisible, setProfModVisible] = useState(true);
-   
 
-    const toggleProfModVisibility = () => {
-        setProfModVisible(!isProfModVisible);
-      };
-    
+   const [active, setActive] = useState(true)
+
 
     return <HeaderSty className="header">
     <HeaderContainer className="container header-container">
@@ -25,13 +23,10 @@ export const Header = () => {
             <NavLink className="nav-link" to="#">Контакти</NavLink>
             <NavLink className="nav-link" href="">Правила</NavLink>
             <ProfBox>
-                <ProfMod style={{ display: isProfModVisible ? 'none' : 'flex' }}>
-                    <Link className="nav-link" to="/profile">Редагувати профіль</Link>
-                    <p>Вийти з профілю</p>
-                </ProfMod>
-
-                <Prof onClick={toggleProfModVisibility}></Prof>
-             </ProfBox>
+        <Modal active={active} setActive={setActive} />
+        
+        <Prof onClick={() => setActive(true)}></Prof>
+        </ProfBox>
             
             
         </Nav>)}
