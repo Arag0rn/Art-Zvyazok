@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Content = styled.div`
     position:absolute;
     top: 60px;
-    right: 230px;
+    right: calc(50% - 680px);
     border-radius: 15px;
     background: var(--body-txt, #FFF);
     display: flex;
