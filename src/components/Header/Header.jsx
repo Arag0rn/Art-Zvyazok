@@ -1,4 +1,4 @@
-import { HeaderSty, HeaderContainer, Nav, NavLink, ProfMod, ProfBox } from "./Header.styled"
+import { HeaderSty, HeaderContainer, Nav, NavLink, ProfBox } from "./Header.styled"
 import '../../index';
 import { useAuth } from "Redux/hooks/useAuth";
 import { ReactComponent as Prof } from "./profile.svg";
