@@ -6,6 +6,8 @@ export const selectChatList = state => state.chat.chatList;
 
 export const selectActiveChatTopic = state => state.chat.activeChat?.topic;
 
+export const selectChatMembers = state => state.chat.activeChat.members;
+
 export const selectMemberaNumber = state =>
   state.chat.activeChat?.members.length;
 
@@ -17,9 +19,17 @@ export const selectCurrentChatList = createSelector(
 );
 
 export const selectFirstPublicChat = createSelector([selectChatList], list => {
-  return list.find(({ isPublic }) => isPublic === true).id;
+  const firstPublicChat = list.find(({ isPublic }) => isPublic === true);
+  if (!firstPublicChat) {
+    return null;
+  }
+  return firstPublicChat.id;
 });
 
 export const selectFirstPrivateChat = createSelector([selectChatList], list => {
-  return list.find(({ isPublic }) => isPublic === false).id;
+  const firstPrivateChat = list.find(({ isPublic }) => isPublic === false);
+  if (!firstPrivateChat) {
+    return null;
+  }
+  return firstPrivateChat.id;
 });
